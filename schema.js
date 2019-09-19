@@ -16,14 +16,27 @@ const schema = buildSchema(`
   }
 
   type User {
+    id: ID,
     firstName: String!,
     lastName: String!,
-    emails: [Email]
+    email: String,
   }
 
   type Query {
     item: HackerNewsItem,
-    user: User
+    getUser(id: ID): User,
+    users: [User],
+  }
+
+  input UserInput {
+    id: ID,
+    firstName: String!,
+    lastName: String!,
+    email: String,
+  }
+
+  type Mutation {
+    createUser(input: UserInput): User
   }
 `);
 

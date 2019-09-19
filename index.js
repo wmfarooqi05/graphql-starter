@@ -2,6 +2,7 @@ import express from 'express';
 import expressGraphQL from 'graphql';
 import graphqlHTTP from 'express-graphql';
 import schema from './schema';
+import resolvers from './resolver';
 
 const app = express();
 
@@ -13,32 +14,7 @@ app.get('/', (req, res) => {
   })
 })
 
-root = {
-  item: () => {
-    return {
-      id: 1,
-      timeISO: '2 pm tuesday',
-      time: '123432',
-      text: 'this is hacker news item',
-      title: 'Welcome to GraphQL',
-      deleted: false
-    }
-  },
-  user: () => {
-    return {
-      firstName: 'Jane',
-      lastName: 'Doe',
-      emails: [
-        {
-          email: 'jane@gmail.com',
-        },
-        {
-          email: 'jane@yahoo.com',
-        }
-      ]
-    }
-  }
-};
+const root = resolvers;
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
