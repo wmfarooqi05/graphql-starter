@@ -32,7 +32,7 @@ const typeDefs = `
   }
 
   type Query {
-    item: HackerNewsItem,
+    getItem(id: ID!): HackerNewsItem,
     getUser(id: ID): User,
     users: [User],
   }
@@ -53,7 +53,7 @@ const typeDefs = `
     email: String,
     age: Int,
     gender: Gender,
-    items: [HackerNewsItemInput]
+    items: [ID!]
   }
 
   type Mutation {

@@ -1,22 +1,12 @@
 import Item from './models/item';
-
-let user = {};
-const users = [];
-
+import User from './models/user';
 
 
 const resolvers = {
 
   Query: {
-    item: () => {
-      return {
-        id: 1,
-        timeISO: '2 pm tuesday',
-        time: '123432',
-        text: 'this is hacker news item',
-        title: 'Welcome to GraphQL',
-        deleted: false
-      }
+    getItem: async (_, id) => {
+      return await Item.findOne({ id, id });
     },
     getUser: (_, { id }) => {
       return users.find(user => user.id === id);
@@ -27,10 +17,9 @@ const resolvers = {
     }
   },
   Mutation: {
-    createUser: (_, { input }) => {
-      user = input;
-      users.push(user);
-      return user;
+    createUser: async (_, { input }) => {
+      const user = await User.create(input);
+      return await User.findOne({ _id: user.id }).populate('items'); 
     },
     createItem: (_, { input }) => {
       return Promise.resolve(Item.create(input));
