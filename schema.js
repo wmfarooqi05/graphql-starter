@@ -34,7 +34,7 @@ const typeDefs = `
   type Query {
     getItem(id: ID!): HackerNewsItem,
     getUser(id: ID): User,
-    users: [User],
+    getUsers: [User],
   }
 
   input HackerNewsItemInput {
@@ -60,6 +60,7 @@ const typeDefs = `
     createUser(input: UserInput): User,
     createItem(input: HackerNewsItemInput): HackerNewsItem,
     updateUser(input: UserInput): User,
+    deleteUser(id: ID!): User,
   }
 `;
 
