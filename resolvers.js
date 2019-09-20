@@ -1,3 +1,5 @@
+import Item from './models/item';
+
 let user = {};
 const users = [];
 
@@ -29,6 +31,9 @@ const resolvers = {
       user = input;
       users.push(user);
       return user;
+    },
+    createItem: (_, { input }) => {
+      return Promise.resolve(Item.create(input));
     }
   },
 

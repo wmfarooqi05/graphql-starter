@@ -41,7 +41,7 @@ const typeDefs = `
     id: String,
     text: String,
     timeISO: String,
-    time: String,
+    time: Int,
     title: String,
     deleted: Boolean
   }
@@ -57,7 +57,8 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(input: UserInput): User
+    createUser(input: UserInput): User,
+    createItem(input: HackerNewsItemInput): HackerNewsItem
   }
 `;
 
