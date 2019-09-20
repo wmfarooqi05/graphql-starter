@@ -1,6 +1,7 @@
-import { buildSchema } from "graphql";
+import { makeExecutableSchema } from 'graphql-tools'
+import resolvers from './resolvers';
 
-const schema = buildSchema(`
+const typeDefs = `
 
   type HackerNewsItem {
     id: String,
@@ -58,6 +59,8 @@ const schema = buildSchema(`
   type Mutation {
     createUser(input: UserInput): User
   }
-`);
+`;
+
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 export default schema;
