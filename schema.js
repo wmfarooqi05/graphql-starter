@@ -58,7 +58,8 @@ const typeDefs = `
 
   type Mutation {
     createUser(input: UserInput): User,
-    createItem(input: HackerNewsItemInput): HackerNewsItem
+    createItem(input: HackerNewsItemInput): HackerNewsItem,
+    updateUser(input: UserInput): User,
   }
 `;
 
